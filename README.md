@@ -4,6 +4,6 @@ Wellness Whale adalah sebuah website yang berperan dalam membantu pengguna untuk
 
 ## Kelompok Fujiyama
 Ketua Kelompok: \
-Anggota 1: \
+Anggota 1: Aufa Nasywa Rahman - 21/475255/TK/52454 \
 Anggota 2: \
 Anggota 3: 
