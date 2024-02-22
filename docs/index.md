@@ -39,6 +39,7 @@ Aplikasi Kesehatan Mental berbasis Website
 
 ### Analisis Kompetitor
 #### Kompetitor 1
+
 | Nama Kompetitor | [Headspace](https://www.headspace.com/) |
 |---------|----------|
 | Jenis Kompetitor | Indirect Competitor |
@@ -56,6 +57,7 @@ Aplikasi Kesehatan Mental berbasis Website
 | Integrasi AI dan juga berbagai jenis meditasi yang tersedia pada Wellness Whale |
 
 #### Kompetitor 2
+
 | Nama Kompetitor | [Calm](https://www.calm.com/) |
 |---------|----------|
 | Jenis Kompetitor | Indirect Competitor |
@@ -73,6 +75,7 @@ Aplikasi Kesehatan Mental berbasis Website
 | Interaksi secara langsung dengan professional dan juga berbagai jenis meditasi yang tersedia pada Wellness Whale |
 
 #### Kompetitor 3
+
 | Nama Kompetitor | [Riliv](https://riliv.co/) |
 |---------|----------|
 | Jenis Kompetitor | Direct Competitor |
