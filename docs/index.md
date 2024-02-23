@@ -37,6 +37,9 @@ Bagaimana menyediakan akses yang mudah, terjangkau, dan anonim bagi individu yan
 ### Ide dan Solusi
 Aplikasi Kesehatan Mental berbasis Website
 
+### Lab 2.4
+[Lab 2.4 - Click Here!](lab2-4.md)
+
 ### Analisis Kompetitor
 #### Kompetitor 1
 
