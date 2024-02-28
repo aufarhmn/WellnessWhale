@@ -22,6 +22,7 @@ jobs:
           node-version: '18'
       - name: Install dependencies
         run: npm install
+        working-directory: frontend
   
   lint:
     needs: install-dependencies
@@ -29,8 +30,10 @@ jobs:
     steps: 
       - name: Lint with ESLint
         run: npm run lint
+        working-directory: frontend
       - name: Auto fix lint issues
         run: npm run lint:fix
+        working-directory: frontend
       - name: Commit lint fixes
         run: |
           git config --global user.name '[BOT] Wellness Whale CI/CD'
@@ -47,3 +50,4 @@ jobs:
     steps:
       - name: Build
         run: npm run build
+        working-directory: frontend
