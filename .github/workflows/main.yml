@@ -23,9 +23,16 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '18'
-      - name: Install dependencies
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11'
+      - name: Install dependencies on Frontend
         run: npm install
         working-directory: frontend
+      - name: Install dependencies on Backend
+        run: pip install -r requirements.txt
+        working-directory: backend
   
   lint:
     needs: install-dependencies
