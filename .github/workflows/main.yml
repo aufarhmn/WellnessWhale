@@ -5,6 +5,9 @@ on:
   push:
     branches:
       - main
+    paths:
+      - 'frontend/**'
+      - 'backend/**'
 
 # There are three jobs in this workflow
 # 1. Install dependencies
@@ -24,30 +27,30 @@ jobs:
         run: npm install
         working-directory: frontend
   
-  # lint:
-  #   needs: install-dependencies
-  #   runs-on: ubuntu-20.04
-  #   steps: 
-  #     - name: Lint with ESLint
-  #       run: npm run lint
-  #       working-directory: frontend
-  #     - name: Auto fix lint issues
-  #       run: npm run lint:fix
-  #       working-directory: frontend
-  #     - name: Commit lint fixes
-  #       run: |
-  #         git config --global user.name '[BOT] Wellness Whale CI/CD'
-  #         git config --global user.email 'automated@wellnesswhale.com'
-  #         git add .
-  #         git diff-index --quiet HEAD || git commit -m "[AUTOMATED] fix: linting issues"
-  #         git push origin HEAD:${GITHUB_REF#refs/heads/}
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  lint:
+    needs: install-dependencies
+    runs-on: ubuntu-20.04
+    steps: 
+      - name: Lint with ESLint
+        run: npm run lint
+        working-directory: frontend
+      - name: Auto fix lint issues
+        run: npm run lint:fix
+        working-directory: frontend
+      - name: Commit lint fixes
+        run: |
+          git config --global user.name '[BOT] Wellness Whale CI/CD'
+          git config --global user.email 'automated@wellnesswhale.com'
+          git add .
+          git diff-index --quiet HEAD || git commit -m "[AUTOMATED] fix: linting issues"
+          git push origin HEAD:${GITHUB_REF#refs/heads/}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
-  # build:
-  #   needs: lint
-  #   runs-on: ubuntu-20.04
-  #   steps:
-  #     - name: Build
-  #       run: npm run build
-  #       working-directory: frontend
+  build:
+    needs: lint
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Build
+        run: npm run build
+        working-directory: frontend
