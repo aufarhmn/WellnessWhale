@@ -49,6 +49,9 @@ Metodologi Agile (Kanban)
 ## Entity Relationship Diagram
 ![ERD](images/erd.jpg)
 
+## Arsitektur Sistem
+![System Architecture](images/arsitektur.jpg)
+
 ## Low Fidelity Wireframe
 ![Low Fidelity Wireframe](images/lofi/1.png) \
 ![Low Fidelity Wireframe](images/lofi/2.png) \
