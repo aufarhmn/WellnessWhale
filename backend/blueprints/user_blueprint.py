@@ -42,7 +42,7 @@ def create_user():
     
     user = User(username, email, hashed_password)
     
-    db.users.insert_one(user.to_dict())
+    db.users.insert_one(user.UserToDict())
 
     return jsonify({"message": "Success adding user!"}), 201
 
