@@ -1,6 +1,7 @@
 import bcrypt
 import json
 import jwt
+import os
 
 from flask import Blueprint, jsonify, request, make_response
 from bson import ObjectId
@@ -61,7 +62,7 @@ def login():
         return jsonify({"error": "Invalid credentials!"}), 404
 
     if bcrypt.checkpw(password.encode('utf-8'), user["password"].encode('utf-8')):
-        token = jwt.encode({"email": email}, "your_secret_key", algorithm="HS256")
+        token = jwt.encode({"email": email}, os.getenv('JWT_SECRET'), algorithm="HS256")
 
         response = make_response(jsonify({"message": "Login successful!"}), 200)
 

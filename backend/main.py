@@ -27,8 +27,10 @@ except Exception:
 # BLUEPRINTS ROUTES
 from blueprints.user_blueprint import user_bp
 from blueprints.mood_blueprint import mood_bp
+from blueprints.counselor_blueprint import counselor_bp
 app.register_blueprint(user_bp)
 app.register_blueprint(mood_bp)
+app.register_blueprint(counselor_bp)
 
 # DEFAULT ROUTES
 @app.route('/')
