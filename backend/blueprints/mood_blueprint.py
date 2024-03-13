@@ -33,3 +33,22 @@ def insert_mood():
         return jsonify({"message": "Success adding mood!", "mood_id": str(result.inserted_id)}), 201
     else:
         return jsonify({"error": "Failed to save mood"}), 500
+
+# GET MOOD BASED AND USER
+@mood_bp.route("/<user_id>", methods=["GET"])
+def get_mood(user_id):
+    user = db.users.find_one({"_id": ObjectId(user_id)})
+    if not user:
+        return jsonify({"error": "User not found"}), 400
+
+    mood_ids = user.get("mood_ids")
+    if not mood_ids:
+        return jsonify({"error": "No moods found for user"}), 400
+
+    moods = db.moods.find({"_id": {"$in": mood_ids}})
+    mood_list = [mood for mood in moods]
+
+    for mood in mood_list:
+        mood["_id"] = str(mood["_id"])
+
+    return jsonify(mood_list), 200
