@@ -69,7 +69,6 @@ def get_mood_today(user_id):
     start_of_day = datetime.combine(current_date, datetime.min.time())
     end_of_day = datetime.combine(current_date + timedelta(days=1), datetime.min.time())
 
-    # Filter moods for the current day
     moods = db.moods.find({
         "_id": {"$in": mood_ids},
         "date": {"$gte": start_of_day, "$lt": end_of_day}
