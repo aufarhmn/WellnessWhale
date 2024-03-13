@@ -46,7 +46,7 @@ def login():
         return jsonify({"error": "Invalid credentials!"}), 404
 
     if bcrypt.checkpw(password.encode('utf-8'), counselor["counselor_password"].encode('utf-8')):
-        token = jwt.encode({"counselor_email": email}, os.getenv('JWT_SECRET') , algorithm="HS256")
+        token = jwt.encode({"counselorId": str(counselor["_id"])}, os.getenv('JWT_SECRET') , algorithm="HS256")
 
         response = make_response(jsonify({"message": "Login successful!"}), 200)
 
