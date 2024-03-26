@@ -51,6 +51,7 @@ def login():
         response = make_response(jsonify({"message": "Login successful!"}), 200)
 
         response.set_cookie("Auth", token)
+        response.headers["Auth"] = token
 
         return response
     else:

@@ -12,7 +12,6 @@ from middleware.auth import ensure_authenticated
 user_bp = Blueprint("user", __name__, url_prefix="/user")
 
 # GET ALL USERS
-# EXAMPLE USING MIDDLEWARE TO CHECK TOKEN
 @user_bp.route("/", methods=["GET"])
 @ensure_authenticated
 def get_users():
@@ -78,6 +77,7 @@ def login():
 
 # EDIT USER
 @user_bp.route("/<user_id>", methods=["PUT"])
+@ensure_authenticated
 def update_user(user_id):
     data = request.json
     username = data.get("username")
@@ -99,6 +99,7 @@ def update_user(user_id):
 
 # DELETE USER
 @user_bp.route("/<user_id>", methods=["DELETE"])
+@ensure_authenticated
 def delete_user(user_id):
     result = db.users.delete_one({"_id": ObjectId(user_id)})
     if result.deleted_count > 0:

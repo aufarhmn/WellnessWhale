@@ -3,11 +3,13 @@ from main import db
 from bson import ObjectId
 from models.mood import Mood
 from datetime import datetime, timedelta
+from middleware.auth import ensure_authenticated
 
 mood_bp = Blueprint("mood", __name__, url_prefix="/mood")
 
 # INSERT MOOD CORRESPONDING TO USER
 @mood_bp.route("/", methods=["POST"])
+@ensure_authenticated
 def insert_mood():
     data = request.json
     mood_value = data.get("mood")
@@ -36,6 +38,7 @@ def insert_mood():
 
 # GET MOOD BASED AND USER
 @mood_bp.route("/<user_id>", methods=["GET"])
+@ensure_authenticated
 def get_mood(user_id):
     user = db.users.find_one({"_id": ObjectId(user_id)})
     if not user:
@@ -55,6 +58,7 @@ def get_mood(user_id):
 
 # GET MOOD BASED ON USER AND DATE
 @mood_bp.route("/today/<user_id>", methods=["GET"])
+@ensure_authenticated
 def get_mood_today(user_id):
     user = db.users.find_one({"_id": ObjectId(user_id)})
     if not user:
