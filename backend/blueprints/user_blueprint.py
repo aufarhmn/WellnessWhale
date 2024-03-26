@@ -7,11 +7,14 @@ from flask import Blueprint, jsonify, request, make_response
 from bson import ObjectId
 from main import db
 from models.user import User
+from middleware.auth import ensure_authenticated
 
 user_bp = Blueprint("user", __name__, url_prefix="/user")
 
 # GET ALL USERS
+# EXAMPLE USING MIDDLEWARE TO CHECK TOKEN
 @user_bp.route("/", methods=["GET"])
+@ensure_authenticated
 def get_users():
     users = db.users.find()
     user_list = [user for user in users] 
@@ -67,6 +70,7 @@ def login():
         response = make_response(jsonify({"message": "Login successful!"}), 200)
 
         response.set_cookie("Auth", token)
+        response.headers["Auth"] = token
 
         return response
     else:
