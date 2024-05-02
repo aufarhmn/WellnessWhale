@@ -5,10 +5,10 @@ import Actor from '../../assets/images/signin/actor.png'
 export default function Signin() {
   return (
     <main>
-      <div className='w-screen justify-center items-center flex flex-row'>
+      <div className='w-screen justify-center items-center flex flex-row font-["Poppins"]'>
         <div className='flex flex-col justify-stretch justify-items-center h-screen w-1/2 bg-white gap-4'>
           <div className='w-full h-full'>
-            <div className='flex flex-row justify-center py-20'>
+            <div className='flex flex-row justify-center py-10'>
               <Image src='/Logo.png' width={272} height={44} />
             </div>
           </div>
@@ -58,9 +58,9 @@ export default function Signin() {
               <p className='text-white text-[36px]'> Ciptakan Dunia Yang </p>
               <p className='text-white text-[36px]'> Indah! </p>
             </div>
-            <div className='h-full w-full flex flex-row justify-center'>
-              <Image src={Actor} className="h-full" width={350} height={496} />
-            </div>
+            {/* <div className='h-full w-full flex flex-row justify-center'>
+              <Image src={Actor} className="h-min w-min" />
+            </div> */}
           </div>
         </div>
       </div>
