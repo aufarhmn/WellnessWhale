@@ -20,6 +20,9 @@ const config: Config = {
         green: {
           400: '#2B544A'
         },
+        orange: {
+          100: '#F06500'
+        }
       }
     },
   },
