@@ -11,8 +11,8 @@ export default function Signin() {
               <Image src='/Logo.png' width={272} height={44} />
             </div>
           </div>
-          <div className='w-full h-full flex flex-col px-20'>
-            <div className='w-full h-1/2'>
+          <div className='w-full h-min flex flex-col px-20'>
+            <div className='w-full h-3/2'>
               <p className='text-[35px] font-bold'> Welcome back! </p>
               <p className='text-l'> Start your journey again! </p>
             </div>
