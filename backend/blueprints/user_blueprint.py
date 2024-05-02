@@ -1,16 +1,19 @@
 import bcrypt
 import json
 import jwt
+import os
 
 from flask import Blueprint, jsonify, request, make_response
 from bson import ObjectId
 from main import db
 from models.user import User
+from middleware.auth import ensure_authenticated
 
 user_bp = Blueprint("user", __name__, url_prefix="/user")
 
 # GET ALL USERS
 @user_bp.route("/", methods=["GET"])
+@ensure_authenticated
 def get_users():
     users = db.users.find()
     user_list = [user for user in users] 
@@ -42,7 +45,7 @@ def create_user():
     
     user = User(username, email, hashed_password)
     
-    db.users.insert_one(user.to_dict())
+    db.users.insert_one(user.UserToDict())
 
     return jsonify({"message": "Success adding user!"}), 201
 
@@ -61,11 +64,12 @@ def login():
         return jsonify({"error": "Invalid credentials!"}), 404
 
     if bcrypt.checkpw(password.encode('utf-8'), user["password"].encode('utf-8')):
-        token = jwt.encode({"email": email}, "your_secret_key", algorithm="HS256")
+        token = jwt.encode({"userId": str(user["_id"])}, os.getenv('JWT_SECRET'), algorithm="HS256")
 
         response = make_response(jsonify({"message": "Login successful!"}), 200)
 
         response.set_cookie("Auth", token)
+        response.headers["Auth"] = token
 
         return response
     else:
@@ -73,6 +77,7 @@ def login():
 
 # EDIT USER
 @user_bp.route("/<user_id>", methods=["PUT"])
+@ensure_authenticated
 def update_user(user_id):
     data = request.json
     username = data.get("username")
@@ -94,6 +99,7 @@ def update_user(user_id):
 
 # DELETE USER
 @user_bp.route("/<user_id>", methods=["DELETE"])
+@ensure_authenticated
 def delete_user(user_id):
     result = db.users.delete_one({"_id": ObjectId(user_id)})
     if result.deleted_count > 0:
