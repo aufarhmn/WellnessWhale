@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Actor from '../../assets/images/signin/actor.png'
 
 export default function Signin() {
   return (
@@ -33,14 +34,35 @@ export default function Signin() {
           </div>
           <div className='w-full h-full'>
             <div className='flex flex-row justify-center py-4'>
-              <button className='bg-green-400 w-1/2 h-12 rounded-lg text-white'> Sign In </button>
+              <button className='bg-green-400 w-1/2 h-12 rounded-lg text-white'>
+                {' '}
+                Sign In{' '}
+              </button>
             </div>
             <div>
-              <p className='text-center'> Don't have an account? <a href='/signup' className='text-orange-100'> Sign Up </a> </p>
+              <p className='text-center'>
+                {' '}
+                Don't have an account?{' '}
+                <a href='/signup' className='text-orange-100'>
+                  {' '}
+                  Sign Up{' '}
+                </a>{' '}
+              </p>
             </div>
           </div>
         </div>
-        <div className='h-screen w-1/2 bg-green-400'></div>
+        <div className='h-screen w-1/2 bg-green-400 justify-center flex items-center flex-row'>
+          <div className='h-3/4 w-3/4 mx-10 my-10 bg-white bg-opacity-40 rounded-[30px] flex flex-col px-10 py-10'>
+            <div>
+              <p className='text-white text-[36px]'> Pantau Terus Mood, </p>
+              <p className='text-white text-[36px]'> Ciptakan Dunia Yang </p>
+              <p className='text-white text-[36px]'> Indah! </p>
+            </div>
+            <div className='h-full w-full flex flex-row justify-center'>
+              <Image src={Actor} className="h-full" width={350} height={496} />
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   )
