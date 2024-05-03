@@ -7,10 +7,16 @@ export default function Footer() {
             <div className="flex flex-col w-full h-[420px] bg-green-400"> 
                 <div className="w-full h-[330px] flex flex-row">
                     <div className="w-4/5 h-full flex flex-col">
-                        {/* <Image src="/Logo-White.png" width={272} height={44} />
+                        <div className="flex flex-row justify-center">
+                            {/* <Image src="/Logo-White.png" width={250} height={44} />
+                            <div className="w-1/3 h-full">
+
+                            </div> */}
+                        </div>
+                        
                         <div>
                             
-                        </div> */}
+                        </div>
                     </div>
                     <div className="w-full h-full bg-white">
 
