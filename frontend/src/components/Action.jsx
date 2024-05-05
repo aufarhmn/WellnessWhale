@@ -13,8 +13,7 @@ export default function Action() {
         <div className='w-full h-full flex flex-col px-20'>
             <div className='w-full h-full font-["Poppins"] my-4 flex flex-col justify-end gap-2'>
                 <p className='font-bold text-[56px]'>Rekomendasi Tindakan</p>
-                <p className='text-[21px]'>Cek keadaanmu sekarang dan dapatkan rekomendasi</p>
-                <p className='text-[21px]'>pencegahan penyakit mental</p>
+                <p className='text-[21px]'>Cek keadaanmu sekarang dan dapatkan rekomendasi pencegahan penyakit mental</p>
             </div>
             <div className='w-full h-full flex flex-row'>
                 {/* <Swiper
