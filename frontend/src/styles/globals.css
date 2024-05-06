@@ -28,6 +28,16 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+.swiper {
+  display: flex !important;
+  position: relative;
+  width: fit;
+}
+
+.swiper-wrapper {
+  display: flex;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

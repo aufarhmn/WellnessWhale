@@ -58,9 +58,9 @@ export default function Signin() {
               <p className='text-white text-[36px]'> Ciptakan Dunia Yang </p>
               <p className='text-white text-[36px]'> Indah! </p>
             </div>
-            {/* <div className='h-full w-full flex flex-row justify-center'>
-              <Image src={Actor} className="h-min w-min" />
-            </div> */}
+            <div className='h-min flex flex-row justify-center'>
+              <Image src={Actor} className="aspect-[2/3]"/>
+            </div>
           </div>
         </div>
       </div>
