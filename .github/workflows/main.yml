@@ -55,7 +55,7 @@ jobs:
   #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
   build:
-    needs: lint
+    needs: install-dependencies
     runs-on: ubuntu-20.04
     steps:
       - name: Build
