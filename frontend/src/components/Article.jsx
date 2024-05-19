@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Article1 from "../assets/images/hero/Article.png"
+import Article1 from "../assets/images/hero/Article.png";
 
 export default function Article() {
   return (
@@ -23,42 +23,66 @@ export default function Article() {
           </button>
         </div>
         <div className="w-full h-max flex flex-row mt-4 px-24">
-            <div className="h-full w-full bg-white flex flex-col px-2">
-                <div className="w-full h-fit">
-                    <Image src={Article1} className="aspect-auto" />
-                </div>
-                <div className="w-full h-fit mt-8">
-                    <p className="font-bold font-['Poppins'] text-[26px]"> Solusi susah tidur </p>
-                    <p className="font-['Poppins'] text-[20px]"> Berikut adalah penjelasan bagaimana anda bisa susah... </p>
-                </div>
+          <div className="h-full w-full bg-white flex flex-col px-2">
+            <div className="w-full h-fit">
+              <Image src={Article1} className="aspect-auto" />
             </div>
-            <div className="h-full w-full bg-white flex flex-col px-2">
-                <div className="w-full h-fit">
-                    <Image src={Article1} className="aspect-auto" />
-                </div>
-                <div className="w-full h-fit mt-8">
-                    <p className="font-bold font-['Poppins'] text-[26px]"> Solusi susah tidur </p>
-                    <p className="font-['Poppins'] text-[20px]"> Berikut adalah penjelasan bagaimana anda bisa susah... </p>
-                </div>
+            <div className="w-full h-fit mt-8">
+              <p className="font-bold font-['Poppins'] text-[26px]">
+                {" "}
+                Solusi susah tidur{" "}
+              </p>
+              <p className="font-['Poppins'] text-[20px]">
+                {" "}
+                Berikut adalah penjelasan bagaimana anda bisa susah...{" "}
+              </p>
             </div>
-            <div className="h-full w-full bg-white flex flex-col px-2">
-                <div className="w-full h-fit">
-                    <Image src={Article1} className="aspect-auto" />
-                </div>
-                <div className="w-full h-fit mt-8">
-                    <p className="font-bold font-['Poppins'] text-[26px]"> Solusi susah tidur </p>
-                    <p className="font-['Poppins'] text-[20px]"> Berikut adalah penjelasan bagaimana anda bisa susah... </p>
-                </div>
+          </div>
+          <div className="h-full w-full bg-white flex flex-col px-2">
+            <div className="w-full h-fit">
+              <Image src={Article1} className="aspect-auto" />
             </div>
-            <div className="h-full w-full bg-white flex flex-col px-2">
-                <div className="w-full h-fit">
-                    <Image src={Article1} className="aspect-auto" />
-                </div>
-                <div className="w-full h-fit mt-8">
-                    <p className="font-bold font-['Poppins'] text-[26px]"> Solusi susah tidur </p>
-                    <p className="font-['Poppins'] text-[20px]"> Berikut adalah penjelasan bagaimana anda bisa susah... </p>
-                </div>
+            <div className="w-full h-fit mt-8">
+              <p className="font-bold font-['Poppins'] text-[26px]">
+                {" "}
+                Solusi susah tidur{" "}
+              </p>
+              <p className="font-['Poppins'] text-[20px]">
+                {" "}
+                Berikut adalah penjelasan bagaimana anda bisa susah...{" "}
+              </p>
             </div>
+          </div>
+          <div className="h-full w-full bg-white flex flex-col px-2">
+            <div className="w-full h-fit">
+              <Image src={Article1} className="aspect-auto" />
+            </div>
+            <div className="w-full h-fit mt-8">
+              <p className="font-bold font-['Poppins'] text-[26px]">
+                {" "}
+                Solusi susah tidur{" "}
+              </p>
+              <p className="font-['Poppins'] text-[20px]">
+                {" "}
+                Berikut adalah penjelasan bagaimana anda bisa susah...{" "}
+              </p>
+            </div>
+          </div>
+          <div className="h-full w-full bg-white flex flex-col px-2">
+            <div className="w-full h-fit">
+              <Image src={Article1} className="aspect-auto" />
+            </div>
+            <div className="w-full h-fit mt-8">
+              <p className="font-bold font-['Poppins'] text-[26px]">
+                {" "}
+                Solusi susah tidur{" "}
+              </p>
+              <p className="font-['Poppins'] text-[20px]">
+                {" "}
+                Berikut adalah penjelasan bagaimana anda bisa susah...{" "}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </>

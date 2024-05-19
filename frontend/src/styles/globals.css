@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -41,5 +41,70 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .w-full {
+    width: 100% !important;
+  }
+  .h-full {
+    height: 100% !important;
+  }
+  .py-32 {
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+  }
+  .px-20 {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  .w-4-5 {
+    width: 100% !important;
+  }
+  .w-fit {
+    width: 100% !important;
+  }
+  .max-w-75 {
+    max-width: 100% !important;
+  }
+  .h-900 {
+    height: auto !important;
+  }
+  .bg-white {
+    background-color: #fff !important;
+  }
+  .font-bold {
+    font-weight: bold !important;
+  }
+  .text-56 {
+    font-size: 24px !important;
+  }
+  .text-21 {
+    font-size: 18px !important;
+  }
+  .text-white {
+    color: #fff !important;
+  }
+  .bg-green-400 {
+    background-color: #34c759 !important;
+  }
+  .rounded-12 {
+    border-radius: 12px !important;
+  }
+  .px-24 {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  .py-6 {
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+  }
+  .container {
+    flex-direction: column; /* Mengubah tata letak menjadi kolom */
+  }
+  .image-container {
+    order: 2; /* Mengubah urutan elemen */
+    margin-bottom: 20px; /* Menambahkan ruang di antara elemen */
   }
 }

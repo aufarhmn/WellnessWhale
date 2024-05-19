@@ -1,68 +1,71 @@
-import React from 'react'
-import Image from 'next/image'
-import Sport from '../assets/images/action/sport.png'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Pagination } from 'swiper/modules'
+import React from "react";
+import Image from "next/image";
+import Sport from "../assets/images/action/sport.png";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
 
-import 'swiper/css';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/pagination";
 
 export default function Action() {
   return (
-    <>
-      <div className='w-full h-[900px] bg-white flex flex-row py-32'>
-        <div className='w-4/5 h-full '>
-            <Image className="h-full w-full" src={Sport} width={600} height={400}/>
-        </div>
-        <div className='w-full h-full flex flex-col px-20'>
-            <div className='w-fit h-full font-["Poppins"] my-4 flex flex-col justify-end gap-2'>
-                <p className='font-bold text-[56px]'>Rekomendasi Tindakan</p>
-                <p className='text-[21px]'>Cek keadaanmu sekarang dan dapatkan rekomendasi pencegahan penyakit mental</p>
-            </div>
-            <div className='w-full h-full flex flex-row'>
-                <Swiper
-                    spaceBetween={10}
-                    slidesPerView={4}
-                    pagination={{ 
-                        clickable: true 
-                    }}
-                    modules={[ Pagination ]}
-                    className="w-full max-w-[75%] h-full"
-                    >
-                <SwiperSlide> 
-                    <div className='w-[150px] h-[200px] bg-green-400 rounded-[12px]'>
-                        <p className='text-white text-[20px] font-bold'>Sport</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide> 
-                    <div className='w-[150px] h-[200px] bg-green-400 rounded-[12px]'>
-                        <p className='text-white text-[20px] font-bold'>Sport</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide> 
-                    <div className='w-[150px] h-[200px] bg-green-400 rounded-[12px]'>
-                        <p className='text-white text-[20px] font-bold'>Sport</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide> 
-                    <div className='w-[150px] h-[200px] bg-green-400 rounded-[12px]'>
-                        <p className='text-white text-[20px] font-bold'>Sport</p>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide> 
-                    <div className='w-[150px] h-[200px] bg-green-400 rounded-[12px]'>
-                        <p className='text-white text-[20px] font-bold'>Sport</p>
-                    </div>
-                </SwiperSlide>
-                </Swiper>
-            </div>
-            <div className='w-fit h-min mb-10'>
-                <button className='px-24 py-6 bg-green-400 rounded-[12px]'>
-                    <p className='text-white text-[20px] font-bold'>Masukan Mood</p>
-                </button>
-            </div>
+    <div className="w-full bg-white flex flex-col md:flex-row md:items-center py-8 px-4 md:px-20">
+      <div className="w-full md:w-1/2 flex justify-center md:justify-end">
+        <div className="max-w-md md:max-w-lg">
+          <Image src={Sport} alt="Sport" width={600} height={400} />
         </div>
       </div>
-    </>
-  )
+      <div className="w-full md:w-1/2 flex flex-col items-center md:items-start md:px-8 mt-8 md:mt-0">
+        <div className="text-center md:text-left mb-8">
+          <h1 className="text-4xl md:text-6xl font-bold">
+            Rekomendasi Tindakan
+          </h1>
+          <p className="text-lg md:text-xl">
+            Cek keadaanmu sekarang dan dapatkan rekomendasi pencegahan penyakit
+            mental
+          </p>
+        </div>
+        <div className="w-full flex justify-center md:justify-start mb-8">
+          <Swiper
+            spaceBetween={10}
+            slidesPerView={1}
+            pagination={{ clickable: true }}
+            modules={[Pagination]}
+            className="max-w-lg"
+          >
+            <SwiperSlide>
+              <div className="w-48 md:w-56 h-64 bg-green-400 rounded-lg flex items-center justify-center">
+                <p className="text-white text-lg md:text-xl font-bold">Sport</p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="w-48 md:w-56 h-64 bg-green-400 rounded-lg flex items-center justify-center">
+                <p className="text-white text-lg md:text-xl font-bold">Sport</p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="w-48 md:w-56 h-64 bg-green-400 rounded-lg flex items-center justify-center">
+                <p className="text-white text-lg md:text-xl font-bold">Sport</p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="w-48 md:w-56 h-64 bg-green-400 rounded-lg flex items-center justify-center">
+                <p className="text-white text-lg md:text-xl font-bold">Sport</p>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className="w-48 md:w-56 h-64 bg-green-400 rounded-lg flex items-center justify-center">
+                <p className="text-white text-lg md:text-xl font-bold">Sport</p>
+              </div>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+        <div className="mb-10">
+          <button className="px-8 py-4 bg-green-400 rounded-lg">
+            <p className="text-white text-lg font-bold">Masukan Mood</p>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 }
