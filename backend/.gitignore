@@ -4,4 +4,6 @@ blueprints/__pycache__
 models/__pycache__
 middleware/__pycache__
 
+node_modules
+
 .flaskenv

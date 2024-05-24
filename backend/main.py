@@ -3,9 +3,11 @@ import os
 
 from flask import Flask 
 from pymongo import MongoClient
+from flask_cors import CORS
 
 # FLASK APP
 app = Flask(__name__) 
+CORS(app)
 
 # MONGODB CONNECTION
 from dotenv import load_dotenv
