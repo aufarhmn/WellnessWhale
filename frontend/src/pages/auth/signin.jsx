@@ -118,7 +118,7 @@ export default function Signin() {
             <div>
               <p className="text-center">
                 Don't have an account?
-                <a href="/signup" className="text-orange-100">
+                <a href="/auth/register" className="text-orange-100">
                   {" "}
                   Sign Up{" "}
                 </a>

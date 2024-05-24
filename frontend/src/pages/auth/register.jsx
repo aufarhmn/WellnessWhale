@@ -54,17 +54,19 @@ export default function Register() {
         formData
       );
       toast.success("Registration successful!");
-      router.push("/auth/signin");
+      setTimeout(() => {
+        router.push("/auth/signin");
+      }, 2000); 
     } catch (error) {
       toast.error("There was an error registering. Please try again.");
     }
   };
 
   return (
-    <main>
+    <main className="h-screen w-screen">
       <ToastContainer />
-      <div className="w-screen flex flex-col md:flex-row justify-center items-center font-['Poppins']">
-        <div className="flex flex-col justify-stretch justify-items-center h-screen md:w-1/2 w-full bg-white gap-4">
+      <div className="w-screen flex flex-col md:flex-row justify-center items-center font-['Poppins'] bg-green-400">
+        <div className="flex flex-col justify-stretch justify-items-center md:w-1/2 w-full bg-white gap-4">
           <div className="w-full h-full">
             <div className="flex flex-row justify-center py-10">
               <Image src="/Logo.png" width={272} height={44} />
@@ -132,7 +134,7 @@ export default function Register() {
             <div>
               <p className="text-center">
                 Already have an account?
-                <a href="/signup" className="text-orange-100">
+                <a href="/auth/signin" className="text-orange-100">
                   {" "}
                   Login{" "}
                 </a>
