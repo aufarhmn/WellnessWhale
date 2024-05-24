@@ -9,7 +9,7 @@ export default function Mood() {
           <p className='text-center mb-6'>Dapatkan rekomendasi tindakan untuk memperbaiki mood anda</p>
           <form>
             <div className='mb-4'>
-              <label className='block text-sm font-medium mb-2'>Nama</label>
+              <label className='block text-sm font-medium mb-2'>Mood</label>
               <input type='text' id='nama' className='w-full p-2 border border-gray-300 rounded' placeholder='masukkan nama' required />
             </div>
             <div className='mb-4'>

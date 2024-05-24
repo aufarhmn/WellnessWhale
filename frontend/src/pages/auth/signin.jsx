@@ -50,6 +50,8 @@ export default function Signin() {
         process.env.NEXT_PUBLIC_BACKEND_URL + "/user/login",
         formData
       );
+      const authToken = response.data.token;
+      localStorage.setItem('authToken', authToken);
       toast.success("Signin successful!");
       router.push("/");
     } catch (error) {
