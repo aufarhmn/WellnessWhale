@@ -1,30 +1,34 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Actor from "../../assets/images/signin/actor.png";
 
 export default function Register() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     username: "",
     email: "",
-    password: "",
+    password: ""
   });
 
   const [errors, setErrors] = useState({
     username: false,
     email: false,
-    password: false,
+    password: false
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: value
     });
     setErrors({
       ...errors,
-      [name]: false,
+      [name]: false
     });
   };
 
@@ -34,28 +38,31 @@ export default function Register() {
     const newErrors = {
       username: !username,
       email: !email,
-      password: !password,
+      password: !password
     };
 
     setErrors(newErrors);
 
     if (Object.values(newErrors).some((error) => error)) {
-      console.log("Please fill in all fields.");
+      toast.error("Please fill in all fields.");
       return;
     }
 
     try {
-      const response = await axios.post(process.env.NEXT_PUBLIC_BACKEND_URL + "/user/", formData);
-      console.log("Registration successful:", response.data);
-        // Handle successful registration (e.g., redirect to login page)
+      const response = await axios.post(
+        process.env.NEXT_PUBLIC_BACKEND_URL + "/user/",
+        formData
+      );
+      toast.success("Registration successful!");
+      router.push("/auth/signin");
     } catch (error) {
-      console.error("There was an error registering:", error);
-      // Handle registration error (e.g., show error message to user)
+      toast.error("There was an error registering. Please try again.");
     }
   };
 
   return (
     <main>
+      <ToastContainer />
       <div className="w-screen flex flex-col md:flex-row justify-center items-center font-['Poppins']">
         <div className="flex flex-col justify-stretch justify-items-center h-screen md:w-1/2 w-full bg-white gap-4">
           <div className="w-full h-full">
@@ -65,10 +72,7 @@ export default function Register() {
           </div>
           <div className="w-full h-min flex flex-col px-8 md:px-20">
             <div className="w-full h-auto">
-              <p className="text-[28px] md:text-[35px] font-bold">
-                {" "}
-                Welcome!{" "}
-              </p>
+              <p className="text-[28px] md:text-[35px] font-bold"> Welcome! </p>
               <p className="text-sm md:text-l"> Let's start your journey </p>
             </div>
             <div className="">
@@ -79,9 +83,13 @@ export default function Register() {
                 placeholder="Username"
                 value={formData.username}
                 onChange={handleChange}
-                className={`border-2 ${errors.username ? 'border-red-500' : 'border-black'} px-4 rounded-lg w-full h-10 md:h-12`}
+                className={`border-2 ${
+                  errors.username ? "border-red-500" : "border-black"
+                } px-4 rounded-lg w-full h-10 md:h-12`}
               />
-              {errors.username && <p className="text-red-500 text-sm">Username is required</p>}
+              {errors.username && (
+                <p className="text-red-500 text-sm">Username is required</p>
+              )}
               <p className="font-bold text-lg md:text-xl py-3"> Email </p>
               <input
                 type="email"
@@ -89,9 +97,13 @@ export default function Register() {
                 placeholder="Email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`border-2 ${errors.email ? 'border-red-500' : 'border-black'} px-4 rounded-lg w-full h-10 md:h-12`}
+                className={`border-2 ${
+                  errors.email ? "border-red-500" : "border-black"
+                } px-4 rounded-lg w-full h-10 md:h-12`}
               />
-              {errors.email && <p className="text-red-500 text-sm">Email is required</p>}
+              {errors.email && (
+                <p className="text-red-500 text-sm">Email is required</p>
+              )}
               <p className="font-bold text-lg md:text-xl py-3"> Password </p>
               <input
                 type="password"
@@ -99,9 +111,13 @@ export default function Register() {
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleChange}
-                className={`border-2 ${errors.password ? 'border-red-500' : 'border-black'} px-4 rounded-lg w-full h-10 md:h-12`}
+                className={`border-2 ${
+                  errors.password ? "border-red-500" : "border-black"
+                } px-4 rounded-lg w-full h-10 md:h-12`}
               />
-              {errors.password && <p className="text-red-500 text-sm">Password is required</p>}
+              {errors.password && (
+                <p className="text-red-500 text-sm">Password is required</p>
+              )}
             </div>
           </div>
           <div className="w-full h-full">
