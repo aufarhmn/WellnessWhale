@@ -66,7 +66,7 @@ def login():
     if bcrypt.checkpw(password.encode('utf-8'), user["password"].encode('utf-8')):
         token = jwt.encode({"userId": str(user["_id"])}, os.getenv('JWT_SECRET'), algorithm="HS256")
 
-        response = make_response(jsonify({"message": "Login successful!"}), 200)
+        response = make_response(jsonify({"message": "Login successful!", "token": token}), 200)
 
         response.set_cookie("Auth", token)
         response.headers["Auth"] = token

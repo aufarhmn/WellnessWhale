@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useRouter } from "next/router";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Actor from "../../assets/images/signin/actor.png";
 
-export default function Signin() {
+export default function Register() {
   const router = useRouter();
   const [formData, setFormData] = useState({
+    username: "",
     email: "",
     password: ""
   });
 
   const [errors, setErrors] = useState({
+    username: false,
     email: false,
     password: false
   });
@@ -31,9 +33,10 @@ export default function Signin() {
   };
 
   const handleSubmit = async () => {
-    const { email, password } = formData;
+    const { username, email, password } = formData;
 
     const newErrors = {
+      username: !username,
       email: !email,
       password: !password
     };
@@ -47,37 +50,48 @@ export default function Signin() {
 
     try {
       const response = await axios.post(
-        process.env.NEXT_PUBLIC_BACKEND_URL + "/user/login",
+        process.env.NEXT_PUBLIC_BACKEND_URL + "/user/",
         formData
       );
-      const authToken = response.data.token;
-      localStorage.setItem('authToken', authToken);
-      toast.success("Signin successful!");
-      router.push("/");
+      toast.success("Registration successful!");
+      setTimeout(() => {
+        router.push("/auth/signin");
+      }, 2000); 
     } catch (error) {
-      toast.error("There was an error signing in. Please try again.");
+      toast.error("There was an error registering. Please try again.");
     }
   };
 
   return (
-    <main>
+    <main className="h-screen w-screen">
       <ToastContainer />
-      <div className="w-screen flex flex-col md:flex-row justify-center items-center font-['Poppins']">
-        <div className="flex flex-col justify-stretch justify-items-center h-screen md:w-1/2 w-full bg-white gap-4 p-4 md:p-0">
+      <div className="w-screen flex flex-col md:flex-row justify-center items-center font-['Poppins'] bg-green-400">
+        <div className="flex flex-col justify-stretch justify-items-center md:w-1/2 w-full bg-white gap-4">
           <div className="w-full h-full">
             <div className="flex flex-row justify-center py-10">
-              <Image src="/Logo.png" width={272} height={44} alt="Logo" />
+              <Image src="/Logo.png" width={272} height={44} />
             </div>
           </div>
           <div className="w-full h-min flex flex-col px-8 md:px-20">
             <div className="w-full h-auto">
-              <p className="text-[28px] md:text-[35px] font-bold">
-                {" "}
-                Welcome back!{" "}
-              </p>
-              <p className="text-sm md:text-l"> Start your journey again! </p>
+              <p className="text-[28px] md:text-[35px] font-bold"> Welcome! </p>
+              <p className="text-sm md:text-l"> Let's start your journey </p>
             </div>
             <div className="">
+              <p className="font-bold text-lg md:text-xl py-3"> Username </p>
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                value={formData.username}
+                onChange={handleChange}
+                className={`border-2 ${
+                  errors.username ? "border-red-500" : "border-black"
+                } px-4 rounded-lg w-full h-10 md:h-12`}
+              />
+              {errors.username && (
+                <p className="text-red-500 text-sm">Username is required</p>
+              )}
               <p className="font-bold text-lg md:text-xl py-3"> Email </p>
               <input
                 type="email"
@@ -114,15 +128,15 @@ export default function Signin() {
                 onClick={handleSubmit}
                 className="bg-green-400 w-3/4 md:w-1/2 h-10 md:h-12 rounded-lg text-white"
               >
-                Sign In
+                Register
               </button>
             </div>
             <div>
               <p className="text-center">
-                Don't have an account?
-                <a href="/auth/register" className="text-orange-100">
+                Already have an account?
+                <a href="/auth/signin" className="text-orange-100">
                   {" "}
-                  Sign Up{" "}
+                  Login{" "}
                 </a>
               </p>
             </div>
@@ -142,7 +156,7 @@ export default function Signin() {
               <p className="text-white text-[28px] md:text-[36px]"> Indah! </p>
             </div>
             <div className="h-min flex flex-row justify-center">
-              {/* <Image src={Actor} className="aspect-[2/3]" alt="Actor" /> */}
+              {/* <Image src={Actor} className="aspect-[2/3]" /> */}
             </div>
           </div>
         </div>

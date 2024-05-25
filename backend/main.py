@@ -3,9 +3,11 @@ import os
 
 from flask import Flask 
 from pymongo import MongoClient
+from flask_cors import CORS
 
 # FLASK APP
 app = Flask(__name__) 
+CORS(app)
 
 # MONGODB CONNECTION
 from dotenv import load_dotenv
@@ -28,9 +30,11 @@ except Exception:
 from blueprints.user_blueprint import user_bp
 from blueprints.mood_blueprint import mood_bp
 from blueprints.counselor_blueprint import counselor_bp
+from blueprints.expert_systems_blueprint import expert_systems_bp
 app.register_blueprint(user_bp)
 app.register_blueprint(mood_bp)
 app.register_blueprint(counselor_bp)
+app.register_blueprint(expert_systems_bp)
 
 # DEFAULT ROUTES
 @app.route('/')

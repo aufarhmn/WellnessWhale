@@ -9,8 +9,8 @@ import "swiper/css/pagination";
 
 export default function Action() {
   return (
-    <div className="w-full bg-white flex flex-col md:flex-row md:items-center py-8 px-4 md:px-20">
-      <div className="w-full md:w-1/2 flex justify-center md:justify-end">
+    <div className="w-full bg-white flex flex-col md:flex-row md:items-center py-8">
+      <div className="w-full md:w-1/2 flex justify-center md:justify-start">
         <div className="max-w-md md:max-w-lg">
           <Image src={Sport} alt="Sport" width={600} height={400} />
         </div>

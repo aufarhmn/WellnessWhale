@@ -13,7 +13,10 @@ mood_bp = Blueprint("mood", __name__, url_prefix="/mood")
 def insert_mood():
     data = request.json
     mood_value = data.get("mood")
-    user_id = data.get("user_id")
+    keluhan = data.get("keluhan")
+    fisik = data.get("fisik")
+    aktivitas_terakhir = data.get("aktivitas_terakhir")
+    user_id = request.userId
 
     if not (mood_value and user_id):
         return jsonify({"error": "Mood and user_id are required"}), 400
@@ -25,7 +28,7 @@ def insert_mood():
     if "mood_ids" not in user:
         user["mood_ids"] = []
 
-    mood = Mood(mood_value, datetime.utcnow())
+    mood = Mood(mood_value, keluhan, fisik, aktivitas_terakhir, datetime.utcnow())
     mood_dict = mood.MoodToDict()
     result = db.moods.insert_one(mood_dict)
 
