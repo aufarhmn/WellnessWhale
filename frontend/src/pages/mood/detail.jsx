@@ -1,13 +1,15 @@
-import MoodDetail from '../../components/MoodDetail'
-import Navbar from '../../components/Navbar'
-import Footer from '../../components/Footer'
+import MoodDetail from "../../components/MoodDetail";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
 export default function InputMood() {
   return (
     <>
-      <Navbar />
-      <MoodDetail />
-      <Footer />
+      <main className="bg-white">
+        <Navbar />
+        <MoodDetail />
+        <Footer />
+      </main>
     </>
-  )
+  );
 }

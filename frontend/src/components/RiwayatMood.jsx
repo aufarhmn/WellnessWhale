@@ -57,6 +57,15 @@ const MentalHealthHistory = () => {
     });
   }, []);
 
+  const handleSaveToLocalStorage = (entry) => {
+    const moodData = {
+      riwayatMood: entry.mood,
+      riwayatDate: entry.date
+    };
+    localStorage.setItem('moodData', JSON.stringify(moodData));
+    window.location.href = '/mood/detail';
+  };
+
   return (
     <div className="container mx-auto pt-32 px-4 lg:px-20 bg-white">
       <h1 className="text-2xl font-bold mb-6">Riwayat kesehatan mentalmu</h1>
@@ -70,7 +79,12 @@ const MentalHealthHistory = () => {
                 <h3 className="font-medium">{formatDate(entry.date)}</h3>
                 <p className="font-semibold">{entry.mood}</p>
               </div>
-              <button className="bg-green-400 text-white px-4 py-2 rounded-lg mt-4 lg:mt-0 lg:ml-4">Detail</button>
+              <button
+                className="bg-green-400 text-white px-4 py-2 rounded-lg mt-4 lg:mt-0 lg:ml-4"
+                onClick={() => handleSaveToLocalStorage(entry)}
+              >
+                Detail
+              </button>
             </div>
           ))}
         </div>

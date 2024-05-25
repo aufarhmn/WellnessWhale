@@ -15,6 +15,7 @@ export default function Home() {
   useEffect(() => {
     localStorage.removeItem("mood");
     localStorage.removeItem("expertSystem");
+    localStorage.removeItem("moodData");
     if (!localStorage.getItem("authToken")) {
       toast.error("Please login to get access!");
       setTimeout(() => {
