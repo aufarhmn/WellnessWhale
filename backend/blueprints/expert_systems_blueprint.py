@@ -68,9 +68,9 @@ def anxiety():
         anxiety_score += score * weight
 
     if anxiety_score >= threshold:
-        return jsonify({"response": "Dari jawaban Anda, sepertinya Anda mungkin mengalami gejala kecemasan. Disarankan untuk menghubungi profesional kesehatan mental."})
+        return jsonify({"status": 1,"response": "Dari jawaban Anda, sepertinya Anda mungkin mengalami gejala kecemasan. Disarankan untuk menghubungi profesional kesehatan mental."})
     else:
-        return jsonify({"response": "Sepertinya Anda tidak menunjukkan banyak gejala kecemasan, tapi tetap jaga kesehatan mental Anda!"})
+        return jsonify({"status": 0, "response": "Sepertinya Anda tidak menunjukkan banyak gejala kecemasan, tapi tetap jaga kesehatan mental Anda!"})
 
  
 @expert_systems_bp.route('/bipolar', methods=['POST'])
@@ -94,9 +94,9 @@ def bipolar():
         bipolar_score += score * weight
 
     if bipolar_score >= threshold:
-        return jsonify({"response": "Dari jawaban Anda, sepertinya Anda mungkin mengalami gejala bipolar. Disarankan untuk menghubungi profesional kesehatan mental."})
+        return jsonify({"status": 1, "response": "Dari jawaban Anda, sepertinya Anda mungkin mengalami gejala bipolar. Disarankan untuk menghubungi profesional kesehatan mental."})
     else:
-        return jsonify({"response": "Sepertinya Anda tidak menunjukkan banyak gejala kecemasan, tapi tetap jaga kesehatan mental Anda!"})
+        return jsonify({"status": 0, "response": "Sepertinya Anda tidak menunjukkan banyak gejala kecemasan, tapi tetap jaga kesehatan mental Anda!"})
 
 
 @expert_systems_bp.route('/depresi', methods=['POST'])
@@ -120,6 +120,6 @@ def depression():
         depression_score += score * weight
 
     if depression_score >= threshold:
-        return jsonify({"response": "Dari jawaban Anda, sepertinya Anda mungkin mengalami gejala depresi. Disarankan untuk menghubungi profesional kesehatan mental."})
+        return jsonify({"status": 1, "response": "Dari jawaban Anda, sepertinya Anda mungkin mengalami gejala depresi. Disarankan untuk menghubungi profesional kesehatan mental."})
     else:
-        return jsonify({"response": "Sepertinya Anda tidak menunjukkan banyak gejala kecemasan, tapi tetap jaga kesehatan mental Anda!"})
+        return jsonify({"status": 0, "response": "Sepertinya Anda tidak menunjukkan banyak gejala kecemasan, tapi tetap jaga kesehatan mental Anda!"})
