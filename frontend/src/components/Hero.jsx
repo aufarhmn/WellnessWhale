@@ -12,24 +12,21 @@ export default function Hero() {
           </div>
           <div className="mt-8">
             <p className="text-white font-bold text-[30px] lg:text-[55px] mt-2">
-              Konsultasi Mudah
+              Diagnosis Mudah
             </p>
             <p className="text-white font-bold text-[30px] lg:text-[56px] mt-2">
-              dan Murah
+              dan Cepat
             </p>
             <p className="text-white text-[14px] lg:text-[16px] mt-2">
-              Cek psikolog terbaik kami dan jadwalkan konsultasi untuk
-            </p>
-            <p className="text-white text-[14px] lg:text-[16px] mt-2">
-              mental yang lebih baik
+              Cek fitur kami untuk mendapatkan kesehatan mental yang lebih baik
             </p>
           </div>
-          <div className="mt-8">
+          {/* <div className="mt-8">
             <button className="font-bold text-green-400 w-full lg:w-1/2 h-[50px] lg:h-[3.5rem] mt-4 bg-white rounded-[10px] px-[10px] py-[10px]">
               {" "}
               List Psikolog{" "}
             </button>
-          </div>
+          </div> */}
         </div>
 
         <div className="w-full lg:w-1/2 h-[300px] lg:h-full flex items-center justify-center">

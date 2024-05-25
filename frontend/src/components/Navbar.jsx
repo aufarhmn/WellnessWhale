@@ -36,9 +36,8 @@ export default function Navbar() {
         </div>
         <div className={`w-full md:flex md:items-center md:gap-[32px] ${isOpen ? 'block' : 'hidden'} md:w-auto`}>
           <div className="flex flex-col md:flex-row md:items-center gap-[32px] text-gray-100">
-            <Link href="/">Konsultasi</Link>
-            <Link href="/">Artikel</Link>
-            <Link href="/">Riwayat</Link>
+            <Link href="/article">Artikel</Link>
+            <Link href="/mood/riwayat">Riwayat</Link>
           </div>
           <div className="relative flex items-center mt-4 md:mt-0">
             <button onClick={toggleProfileMenu} className="focus:outline-none">

@@ -7,7 +7,7 @@ import { IoLogoWhatsapp } from "react-icons/io";
 export default function Footer() {
   return (
     <div className='bg-green-400 text-white font-["Poppins"]'>
-      <div className="container mx-auto flex flex-col lg:flex-row py-8">
+      <div className="container mx-auto flex flex-col lg:flex-row py-8 px-12">
         <div className="flex-1 px-4 lg:px-0">
           <div className="flex justify-center lg:justify-start">
             <Image src="/Logo-White.png" width={200} height={44} alt="Logo" />
