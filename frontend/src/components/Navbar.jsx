@@ -1,12 +1,24 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from 'next/router';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+  const router = useRouter();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
+  };
+
+  const toggleProfileMenu = () => {
+    setIsProfileMenuOpen(!isProfileMenuOpen);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    router.reload();
   };
 
   return (
@@ -28,10 +40,20 @@ export default function Navbar() {
             <Link href="/">Artikel</Link>
             <Link href="/">Riwayat</Link>
           </div>
-          <div className="flex items-center mt-4 md:mt-0">
-            <Link href="/">
+          <div className="relative flex items-center mt-4 md:mt-0">
+            <button onClick={toggleProfileMenu} className="focus:outline-none">
               <Image src="/Profile.png" width={50} height={50} alt="Profile" />
-            </Link>
+            </button>
+            {isProfileMenuOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white border rounded-md shadow-lg py-1 z-10">
+                <Link href="/profile" className="block px-4 py-2 text-gray-800 hover:bg-gray-200">
+                  Profile
+                </Link>
+                <button onClick={handleLogout} className="block w-full text-left px-4 py-2 text-gray-800 hover:bg-gray-200">
+                  Logout
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </nav>
