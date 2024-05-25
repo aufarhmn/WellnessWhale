@@ -12,12 +12,6 @@ export default function MoodResult() {
         return (
           <>
             <h1 className='text-xl font-bold mb-2'>Mood kamu cemas :(</h1>
-            <ul className='list-disc pl-4'>
-              <li><strong>Nama:</strong> John Doe</li>
-              <li><strong>Aktivitas terakhir:</strong> debat dengan rekan kerja</li>
-              <li><strong>Keluhan mental:</strong> cemas berlebihan sehingga sulit tidur</li>
-              <li><strong>Keluhan fisik:</strong> badan lemas dan keringat dingin</li>
-            </ul>
             <div className='mb-6'>
               <h2 className='text-lg font-bold mb-2'>Ringkasan</h2>
               <p>
@@ -57,12 +51,6 @@ export default function MoodResult() {
         return (
           <>
             <h1 className='text-xl font-bold mb-2'>Mood kamu tidak baik :(</h1>
-            <ul className='list-disc pl-4'>
-              <li><strong>Nama:</strong> John Doe</li>
-              <li><strong>Aktivitas terakhir:</strong> debat dengan rekan kerja</li>
-              <li><strong>Keluhan mental:</strong> depresi dan kesal dengan orang sehingga tidak bisa tidur</li>
-              <li><strong>Keluhan fisik:</strong> badan lemas, dan keringatan</li>
-            </ul>
             <div className='mb-6'>
               <h2 className='text-lg font-bold mb-2'>Ringkasan</h2>
               <p>
@@ -102,12 +90,6 @@ export default function MoodResult() {
         return (
           <>
             <h1 className='text-xl font-bold mb-2'>Mood kamu berubah-ubah :(</h1>
-            <ul className='list-disc pl-4'>
-              <li><strong>Nama:</strong> John Doe</li>
-              <li><strong>Aktivitas terakhir:</strong> debat dengan rekan kerja</li>
-              <li><strong>Keluhan mental:</strong> perubahan mood yang drastis dan sulit mengontrol emosi</li>
-              <li><strong>Keluhan fisik:</strong> badan lemas dan cepat lelah</li>
-            </ul>
             <div className='mb-6'>
               <h2 className='text-lg font-bold mb-2'>Ringkasan</h2>
               <p>

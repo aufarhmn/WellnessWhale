@@ -67,7 +67,7 @@ const MentalHealthHistory = () => {
   };
 
   return (
-    <div className="container mx-auto pt-32 px-4 lg:px-20 bg-white">
+    <div className="h-screen container mx-auto pt-32 px-4 lg:px-20 bg-white">
       <h1 className="text-2xl font-bold mb-6">Riwayat kesehatan mentalmu</h1>
       {data.map((weekData, index) => (
         <div key={index} className="mb-8">
