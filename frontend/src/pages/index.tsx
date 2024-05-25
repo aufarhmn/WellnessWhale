@@ -13,6 +13,8 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
+    localStorage.removeItem("mood");
+    localStorage.removeItem("expertSystem");
     if (!localStorage.getItem("authToken")) {
       toast.error("Please login to get access!");
       setTimeout(() => {
