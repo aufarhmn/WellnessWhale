@@ -71,6 +71,7 @@ export default function Depression() {
           router.push("/article");
         }, 2000);
       } else {
+        localStorage.setItem("expertSystem", "Depression");
         router.push("/mood/result");
       }
     } catch (error) {

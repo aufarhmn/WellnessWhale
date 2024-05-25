@@ -71,6 +71,7 @@ export default function Anxiety() {
           router.push("/article");
         }, 2000);
       } else {
+        localStorage.setItem("expertSystem", "Anxiety");
         router.push("/mood/result");
       }
     } catch (error) {

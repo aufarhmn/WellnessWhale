@@ -71,6 +71,7 @@ export default function Bipolar() {
           router.push("/article");
         }, 2000);
       } else {
+        localStorage.setItem("expertSystem", "Bipolar");
         router.push("/mood/result");
       }
     } catch (error) {
