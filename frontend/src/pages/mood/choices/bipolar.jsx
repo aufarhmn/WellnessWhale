@@ -59,9 +59,16 @@ export default function Bipolar() {
     setErrorMessage("");
     console.log(formData);
     try {
+      const authToken = localStorage.getItem('authToken');
+      
       const response = await axios.post(
         process.env.NEXT_PUBLIC_BACKEND_URL + "/expert-systems/bipolar",
-        formData
+        formData,
+        {
+            headers: {
+              Authorization: `Bearer ${authToken}`,
+            },
+        }
       );
       if (response.data.status == 0) {
         toast.info(

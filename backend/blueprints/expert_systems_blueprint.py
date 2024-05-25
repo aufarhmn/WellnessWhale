@@ -1,4 +1,9 @@
 from flask import Blueprint, jsonify, request
+from main import db
+from models.mood import Mood
+from bson import ObjectId
+from middleware.auth import ensure_authenticated
+from datetime import datetime, timedelta
 
 expert_systems_bp = Blueprint('expert_systems', __name__, url_prefix='/expert-systems')
 
@@ -48,8 +53,10 @@ depression_questions = [
 threshold = 0.5
 
 @expert_systems_bp.route('/anxiety', methods=['POST'])
+@ensure_authenticated
 def anxiety():
     data = request.json
+    user_id = request.userId
     anxiety_score = 0
 
     for question, weight in anxiety_questions:
@@ -67,15 +74,36 @@ def anxiety():
         
         anxiety_score += score * weight
 
-    if anxiety_score >= threshold:
-        return jsonify({"status": 1,"response": "Dari jawaban Anda, sepertinya Anda mungkin mengalami gejala kecemasan. Disarankan untuk menghubungi profesional kesehatan mental."})
-    else:
-        return jsonify({"status": 0, "response": "Sepertinya Anda tidak menunjukkan banyak gejala kecemasan, tapi tetap jaga kesehatan mental Anda!"})
+    user = db.users.find_one({"_id": ObjectId(user_id)})
+    if not user:
+        return jsonify({"error": "User not found"}), 400
+    
+    mood_data = {
+        "mood": "",
+        "date": datetime.now()
+    }
 
- 
+    if anxiety_score >= threshold:
+       mood_data["mood"] = "Anxiety"
+       result_message = "Dari jawaban Anda, sepertinya Anda mungkin mengalami gejala kecemasan. Disarankan untuk menghubungi profesional kesehatan mental."
+    else:
+       mood_data["mood"] = "Normal"
+       result_message = "Sepertinya Anda tidak menunjukkan banyak gejala kecemasan, tapi tetap jaga kesehatan mental Anda!"
+
+    result = db.moods.insert_one(mood_data)
+
+    if result.inserted_id:
+        db.users.update_one({"_id": ObjectId(user_id)}, {"$push": {"mood_ids": result.inserted_id}})
+        return jsonify({"status": 1 if anxiety_score >= threshold else 0, "response": result_message}), 201
+    else:
+        return jsonify({"error": "Failed to save mood"}), 500
+
+
 @expert_systems_bp.route('/bipolar', methods=['POST'])
+@ensure_authenticated
 def bipolar():
     data = request.json
+    user_id = request.userId
     bipolar_score = 0
 
     for question, weight in bipolar_questions:
@@ -93,15 +121,36 @@ def bipolar():
         
         bipolar_score += score * weight
 
-    if bipolar_score >= threshold:
-        return jsonify({"status": 1, "response": "Dari jawaban Anda, sepertinya Anda mungkin mengalami gejala bipolar. Disarankan untuk menghubungi profesional kesehatan mental."})
-    else:
-        return jsonify({"status": 0, "response": "Sepertinya Anda tidak menunjukkan banyak gejala kecemasan, tapi tetap jaga kesehatan mental Anda!"})
+    user = db.users.find_one({"_id": ObjectId(user_id)})
+    if not user:
+        return jsonify({"error": "User not found"}), 400
+    
+    mood_data = {
+        "mood": "",
+        "date": datetime.now()
+    }
 
+    if bipolar_score >= threshold:
+        mood_data["mood"] = "Bipolar"
+        result_message = "Dari jawaban Anda, sepertinya Anda mungkin mengalami gejala bipolar. Disarankan untuk menghubungi profesional kesehatan mental."
+    else:
+        mood_data["mood"] = "Normal"
+        result_message = "Sepertinya Anda tidak menunjukkan banyak gejala bipolar, tapi tetap jaga kesehatan mental Anda!"
+
+    result = db.moods.insert_one(mood_data)
+
+    if result.inserted_id:
+        db.users.update_one({"_id": ObjectId(user_id)}, {"$push": {"mood_ids": result.inserted_id}})
+        return jsonify({"status": 1 if bipolar_score >= threshold else 0, "response": result_message}), 201
+    else:
+        return jsonify({"error": "Failed to save mood"}), 500
+    
 
 @expert_systems_bp.route('/depresi', methods=['POST'])
+@ensure_authenticated
 def depression():
     data = request.json
+    user_id = request.userId
     depression_score = 0
 
     for question, weight in depression_questions:
@@ -118,8 +167,27 @@ def depression():
             score = 1 if response in ["ya", "yes", "y"] else 0
         
         depression_score += score * weight
+    
+    user = db.users.find_one({"_id": ObjectId(user_id)})
+    if not user:
+        return jsonify({"error": "User not found"}), 400
+    
+    mood_data = {
+        "mood": "",
+        "date": datetime.now()
+    }
 
     if depression_score >= threshold:
-        return jsonify({"status": 1, "response": "Dari jawaban Anda, sepertinya Anda mungkin mengalami gejala depresi. Disarankan untuk menghubungi profesional kesehatan mental."})
+        mood_data["mood"] = "Depression"
+        result_message = "Dari jawaban Anda, sepertinya Anda mungkin mengalami gejala depresi. Disarankan untuk menghubungi profesional kesehatan mental."
     else:
-        return jsonify({"status": 0, "response": "Sepertinya Anda tidak menunjukkan banyak gejala kecemasan, tapi tetap jaga kesehatan mental Anda!"})
+        mood_data["mood"] = "Normal"
+        result_message = "Sepertinya Anda tidak menunjukkan banyak gejala depresi, tapi tetap jaga kesehatan mental Anda!"
+
+    result = db.moods.insert_one(mood_data)
+
+    if result.inserted_id:
+        db.users.update_one({"_id": ObjectId(user_id)}, {"$push": {"mood_ids": result.inserted_id}})
+        return jsonify({"status": 1 if depression_score >= threshold else 0, "response": result_message}), 201
+    else:
+        return jsonify({"error": "Failed to save mood"}), 500
