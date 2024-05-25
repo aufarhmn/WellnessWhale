@@ -65,7 +65,7 @@ export default function Register() {
   return (
     <main className="h-screen w-screen">
       <ToastContainer />
-      <div className="w-screen flex flex-col md:flex-row justify-center items-center font-['Poppins'] bg-green-400">
+      <div className="w-screen flex flex-col md:flex-row justify-center items-center font-['Poppins'] bg-white">
         <div className="flex flex-col justify-stretch justify-items-center md:w-1/2 w-full bg-white gap-4">
           <div className="w-full h-full">
             <div className="flex flex-row justify-center py-10">
