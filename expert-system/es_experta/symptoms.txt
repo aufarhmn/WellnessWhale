@@ -1,0 +1,27 @@
+Anxiety
+G01	fear_worry - Ketakutan atau kekhawatiran berlebihan
+G02	panic_attacks - Serangan panik
+G03	avoidance - Penghindaran atau ketakutan terhadap situasi atau objek tertentu
+G04	trembling - Gejala fisik seperti berkeringat, gemetar, dan detak jantung cepat
+G05     obsession - Perilaku obsesif atau kompulsif
+
+Depresi
+G06 	sadness - Perasaan sedih atau putus asa yang terus-menerus
+G07	appetite - Perubahan pola makan atau tidur
+G08	interest_loss - Kehilangan minat pada aktivitas yang sebelumnya dinikmati
+G09     mood_swings - Perubahan suasana hati yang terus-menerus dan berfluktuasi
+
+Bipolar
+G10	diff_emotions - Kesulitan dalam mengatur emosi
+G11	dis_thinking - Pola pikir yang terdistorsi
+G12	reck_behavior - Perilaku impulsif atau ceroboh
+G13	relationships - Masalah dengan hubungan
+G14     shyness - Rasa malu yang ekstrem dan penarikan sosial
+G15     rejection - Ketakutan terhadap kritik, penolakan, atau ketidaksetujuan
+G16     empathy - Kurangnya empati dan mengabaikan perasaan orang lain
+
+Skizofrenia
+G17	hallucinations - Delusi, halusinasi, pola pikir yang tidak teratur
+G18	motivation - Kurangnya motivasi
+G19	communication - Kesulitan dalam berkomunikasi
+G20     organization - Kesulitan dengan fungsi eksekutif, seperti perencanaan, pengorganisasian, dan penentuan prioritas
