@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function MoodDetail() {
   return (
-    <div className="container mx-auto p-4 pt-24 bg-white font-['Poppins']">
+    <div className="h-screen container mx-auto p-4 pt-24 bg-white font-['Poppins']">
       <div className="border border-gray-300 rounded-lg p-6 mb-4">
         <div className="flex items-start">
           <div className="flex-1">

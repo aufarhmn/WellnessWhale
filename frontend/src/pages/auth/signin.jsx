@@ -53,7 +53,9 @@ export default function Signin() {
       const authToken = response.data.token;
       localStorage.setItem('authToken', authToken);
       toast.success("Signin successful!");
-      router.push("/");
+      setTimeout(() => {
+        router.push("/");
+      }, 3000); 
     } catch (error) {
       toast.error("There was an error signing in. Please try again.");
     }

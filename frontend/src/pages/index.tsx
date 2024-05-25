@@ -17,7 +17,7 @@ export default function Home() {
       toast.error("Please login to get access!");
       setTimeout(() => {
         router.push("/auth/signin");
-      }, 5000); 
+      }, 3000); 
     }
   }
   , []);
