@@ -101,10 +101,10 @@ body {
     padding-bottom: 6px !important;
   }
   .container {
-    flex-direction: column; /* Mengubah tata letak menjadi kolom */
+    flex-direction: column;
   }
   .image-container {
-    order: 2; /* Mengubah urutan elemen */
-    margin-bottom: 20px; /* Menambahkan ruang di antara elemen */
+    order: 2;
+    margin-bottom: 20px;
   }
 }

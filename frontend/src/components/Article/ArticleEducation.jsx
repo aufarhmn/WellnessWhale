@@ -1,91 +1,54 @@
-// src/pages/ArticleEducation.jsx
-import React from "react";
+// components/ArticleEducation.js
+
+import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import SusahTidur from "../../assets/images/article/SusahTidur.png";
-import SelfHarm from "../../assets/images/article/SelfHarm.png";
+import SelfHarm from "../../assets/images/article/SelfHarm.png"; // Import gambar SelfHarm
 
-const articles = [
-  {
-    title: "Solusi Susah Tidur",
-    description:
-      "Berikut adalah penjelasan bagaimana cara tidur lebih mudah...",
-    image: SusahTidur,
-  },
-  {
-    title: "Jangan Sampai Gerd",
-    description: "Gerd adalah sakit lambung, hanya bisa dihindari...",
-    image: SusahTidur,
-  },
-  {
-    title: "Mengantuk Terus?",
-    description: "Mari kita mengatur tidur mulai dari waktu istirahat yang...",
-    image: SusahTidur,
-  },
-  {
-    title: "Jangan Pakai Obat",
-    description:
-      "Jika tanpa anjuran dari dokter, maka hindari pemakaian obat...",
-    image: SusahTidur,
-  },
-  {
-    title: "Mengatasi Stigma",
-    description:
-      "Berikut adalah penjelasan bagaimana mengatasi stigma pada penyakit mental...",
-    image: SusahTidur,
-  },
-  {
-    title: "Nutrisi Mental",
-    description:
-      "Berikut adalah penjelasan bagaimana nutrisi mental yang baik...",
-    image: SusahTidur,
-  },
-  {
-    title: "Meditasi Mindfulness",
-    description:
-      "Berikut adalah penjelasan bagaimana meditasi mindfulness dapat membantu...",
-    image: SusahTidur,
-  },
-  {
-    title: "Kecemasan Depresi",
-    description:
-      "Berikut adalah penjelasan kecemasan dan depresi bisa diatasi...",
-    image: SusahTidur,
-  },
-  {
-    title: "Media Sosial",
-    description:
-      "Berikut adalah penjelasan bagaimana menghindari dampak negatif dari sosial media...",
-    image: SusahTidur,
-  },
-  {
-    title: "Gizi dan Jiwa",
-    description:
-      "Berikut adalah penjelasan bagaimana gizi berpengaruh terhadap kondisi mental...",
-    image: SusahTidur,
-  },
-  {
-    title: "Istirahat Untuk Pikiran",
-    description:
-      "Berikut adalah penjelasan bagaimana istirahat dapat membantu kesehatan mental...",
-    image: SusahTidur,
-  },
-  {
-    title: "Pernapasan Anti-Stres",
-    description:
-      "Berikut adalah penjelasan bagaimana teknik pernapasan dapat mengurangi stres...",
-    image: SusahTidur,
-  },
-];
+const ArticleEducation = () => {
+  const router = useRouter();
+  const [showArticleContent, setShowArticleContent] = useState(false);
 
-export default function ArticleEducation() {
+  const articles = [
+    {
+      id: "solusi-susah-tidur",
+      title: "Solusi Susah Tidur",
+      description:
+        "Berikut adalah penjelasan bagaimana cara tidur lebih mudah...",
+      image: SusahTidur,
+    },
+    {
+      id: "jangan-sampai-gerd",
+      title: "Jangan Sampai Gerd",
+      description: "Gerd adalah sakit lambung, hanya bisa dihindari...",
+      image: SelfHarm,
+    },
+    {
+      id: "atasi-gangguan-selfharms",
+      title: "Atasi Gangguan Self-Harms",
+      description:
+        "Salah satu gangguan mental yang baru-baru ini kerap dibicarakan adalah self-harm atau gangguan melukai diri sendiri. Tindakan self-harm dilakukan dengan sengaja untuk merasakan sakit fisik demi mengalihkan beban emosi atau sakit hati.",
+      image: SelfHarm,
+    },
+    // Tambahkan artikel lainnya sesuai kebutuhan
+  ];
+
+  const handleCardClick = (id) => {
+    router.push(`/article/${id}`);
+  };
+
+  const handleArticleButtonClick = () => {
+    setShowArticleContent(true);
+  };
+
   return (
     <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
       {/* Hero Section */}
       <div className="hero p-8 rounded-lg mb-8 flex flex-col md:flex-row items-center">
         <div className="flex-1 mb-4 md:mb-0">
           <Image
-            src={SelfHarm}
+            src={articles[2].image} // Ganti dengan path gambar artikel Self-Harm
             alt="Self-harm awareness"
             width={400}
             height={300}
@@ -94,32 +57,33 @@ export default function ArticleEducation() {
         </div>
         <div className="flex-1 text-center md:text-left md:pl-8">
           <h1 className="text-3xl font-bold mb-4" style={{ color: "black" }}>
-            Atasi Gangguan Self-Harms
+            {articles[2].title} {/* Ganti dengan judul artikel Self-Harm */}
           </h1>
           <p className="mb-4" style={{ color: "black" }}>
-            Self-harm adalah suatu tindakan yang merugikan diri sendiri dan
-            dapat berdampak serius pada kesehatan mental dan fisik seseorang.
-            Mari kita jaga diri kita dengan lebih baik dengan mendapatkan
-            wawasan emosional dan psikologis.
+            {articles[2].description}{" "}
+            {/* Ganti dengan deskripsi artikel Self-Harm */}
           </p>
-          <Link href="/artikel" legacyBehavior>
-            <a
-              style={{ backgroundColor: "#2B544A" }}
-              className="text-white py-2 px-4 rounded-lg"
-            >
-              Lihat artikel
-            </a>
-          </Link>
+          <button
+            onClick={handleArticleButtonClick}
+            style={{
+              backgroundColor: "#2B544A",
+              color: "white",
+              padding: "10px 20px",
+              borderRadius: "8px",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            Lihat artikel
+          </button>
         </div>
       </div>
 
-      <h2 className="text-2xl font-bold mb-4" style={{ color: "black" }}>
-        Artikel Edukasi
-      </h2>
-
       {/* Article Section */}
       <section>
-        <h2>Artikel Edukasi</h2>
+        <h2 className="text-2xl font-bold mb-4" style={{ color: "black" }}>
+          Artikel Edukasi
+        </h2>
         <div
           style={{
             display: "grid",
@@ -127,15 +91,17 @@ export default function ArticleEducation() {
             gap: "20px",
           }}
         >
-          {articles.map((article, index) => (
+          {articles.map((article) => (
             <div
-              key={index}
+              key={article.id}
               style={{
                 border: "1px solid #ddd",
                 borderRadius: "8px",
                 overflow: "hidden",
                 background: "#fff",
+                cursor: "pointer",
               }}
+              onClick={() => handleCardClick(article.id)} // Mengarahkan ke halaman artikel yang sesuai
             >
               <Image
                 src={article.image}
@@ -166,4 +132,6 @@ export default function ArticleEducation() {
       </section>
     </div>
   );
-}
+};
+
+export default ArticleEducation;
