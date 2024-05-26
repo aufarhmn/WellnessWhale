@@ -12,20 +12,20 @@ const ArticleEducation = () => {
 
   const articles = [
     {
-      id: "solusi-susah-tidur",
+      educationId: 1,
       title: "Solusi Susah Tidur",
       description:
         "Berikut adalah penjelasan bagaimana cara tidur lebih mudah...",
       image: SusahTidur,
     },
     {
-      id: "jangan-sampai-gerd",
+      educationId: 2,
       title: "Jangan Sampai Gerd",
       description: "Gerd adalah sakit lambung, hanya bisa dihindari...",
       image: SelfHarm,
     },
     {
-      id: "atasi-gangguan-selfharms",
+      educationId: 3,
       title: "Atasi Gangguan Self-Harms",
       description:
         "Salah satu gangguan mental yang baru-baru ini kerap dibicarakan adalah self-harm atau gangguan melukai diri sendiri. Tindakan self-harm dilakukan dengan sengaja untuk merasakan sakit fisik demi mengalihkan beban emosi atau sakit hati.",
@@ -34,8 +34,8 @@ const ArticleEducation = () => {
     // Tambahkan artikel lainnya sesuai kebutuhan
   ];
 
-  const handleCardClick = (id) => {
-    router.push(`/article/${id}`);
+  const handleCardClick = (educationId) => {
+    router.push(`/article/education/${educationId}`);
   };
 
   const handleArticleButtonClick = () => {
@@ -93,7 +93,7 @@ const ArticleEducation = () => {
         >
           {articles.map((article) => (
             <div
-              key={article.id}
+              key={article.educationId}
               style={{
                 border: "1px solid #ddd",
                 borderRadius: "8px",
@@ -101,7 +101,7 @@ const ArticleEducation = () => {
                 background: "#fff",
                 cursor: "pointer",
               }}
-              onClick={() => handleCardClick(article.id)} // Mengarahkan ke halaman artikel yang sesuai
+              onClick={() => handleCardClick(article.educationId)} // Mengarahkan ke halaman artikel yang sesuai
             >
               <Image
                 src={article.image}

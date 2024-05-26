@@ -1,30 +1,31 @@
-// components/[idEducation].jsx
+// components/[educationId].jsx
 
 import React from "react";
 import { useRouter } from "next/router";
 
-const articlesData = {
-  "solusi-susah-tidur": {
+const articlesData = [
+  {
+    educationId: 1,
     title: "Solusi Susah Tidur",
     content: "Ini adalah isi artikel untuk Solusi Susah Tidur...",
   },
-  "jangan-sampai-gerd": {
+  {
+    educationId: 2,
     title: "Jangan Sampai Gerd",
     content: "Ini adalah isi artikel untuk Jangan Sampai Gerd...",
   },
-  "atasi-gangguan-selfharms": {
+  {
+    educationId: 3,
     title: "Atasi Gangguan Self-Harms",
     content:
       "Salah satu gangguan mental yang baru-baru ini kerap dibicarakan adalah self-harm atau gangguan melukai diri sendiri. Tindakan self-harm dilakukan dengan sengaja untuk merasakan sakit fisik demi mengalihkan beban emosi atau sakit hati...",
   },
-};
+];
 
-const ArticleDetail = ({ article }) => {
+const ArticleEducationDetails = () => {
   const router = useRouter();
-
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
+  const { educationId } = router.query;
+  const article = articlesData.find((article) => article.educationId == educationId);
 
   if (!article) {
     return (
@@ -36,28 +37,20 @@ const ArticleDetail = ({ article }) => {
 
   return (
     <div className="p-8 bg-white text-black min-h-screen">
-      <h1>{article.title}</h1>
-      <p>{article.content}</p>
+      <div className="flex flex-col items-center">
+        <h1 className="text-3xl font-semibold mt-4">{article.title}</h1>
+      </div>
+      <div className="mt-8">
+        <p>{article.content}</p>
+        <div className="mt-8">
+          
+
+        </div>
+       
+      </div>
     </div>
   );
 };
 
-export async function getStaticPaths() {
-  const paths = Object.keys(articlesData).map((idEducation) => ({
-    params: { idEducation },
-  }));
 
-  return { paths, fallback: true };
-}
-
-export async function getStaticProps({ params }) {
-  const article = articlesData[params.idEducation];
-
-  return {
-    props: {
-      article,
-    },
-  };
-}
-
-export default ArticleDetail;
+export default ArticleEducationDetails;
