@@ -3,7 +3,7 @@ name: Deploy Backend and Frontend on Azure VM
 on:
   push:
     branches:
-      - main 
+      - main
 
 jobs:
   deploy:
@@ -20,12 +20,13 @@ jobs:
 
     - name: Deploy to VM
       run: |
-        sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
+        echo "${{ secrets.SSH_PASSWORD }}" > sshpass_file
+        sshpass -f sshpass_file ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'bash -s' <<'EOF'
           cd WellnessWhale/backend
           sudo docker build -t backend .
           sudo docker run -d -p 5000:5000 backend
 
-          cd WellnessWhale/frontend
+          cd ../frontend
           sudo docker build -t frontend .
           sudo docker run -d -p 3000:3000 frontend
         EOF
