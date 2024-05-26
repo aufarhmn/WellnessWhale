@@ -1,63 +1,40 @@
-name: Wellnes Whale CI/CD Pipeline
+name: Deploy Backend and Frontend on Azure VM
 
-# This workflow is triggered on pushes to branch main
 on:
   push:
     branches:
       - main
-    paths:
-      - 'frontend/**'
-      - 'backend/**'
 
-# There are three jobs in this workflow
-# 1. Install dependencies
-# 2. Lint to ensure that the code is following the coding standards
-# 3. Build and soon to be deployed to the server
 jobs:
-  install-dependencies:
-    runs-on: ubuntu-20.04
+  deploy:
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18'
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.11'
-      - name: Install dependencies on Frontend
-        run: npm install
-        working-directory: frontend
-      - name: Install dependencies on Backend
-        run: pip install -r requirements.txt
-        working-directory: backend
-  
-  # lint:
-  #   needs: install-dependencies
-  #   runs-on: ubuntu-20.04
-  #   steps: 
-  #     - name: Lint with ESLint
-  #       run: npm run lint
-  #       working-directory: frontend
-  #     - name: Auto fix lint issues
-  #       run: npm run lint:fix
-  #       working-directory: frontend
-  #     - name: Commit lint fixes
-  #       run: |
-  #         git config --global user.name '[BOT] Wellness Whale CI/CD'
-  #         git config --global user.email 'automated@wellnesswhale.com'
-  #         git add .
-  #         git diff-index --quiet HEAD || git commit -m "[AUTOMATED] fix: linting issues"
-  #         git push origin HEAD:${GITHUB_REF#refs/heads/}
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  
-  # build:
-  #   needs: install-dependencies
-  #   runs-on: ubuntu-20.04
-  #   steps:
-  #     - name: Build
-  #       run: npm run build
-  #       working-directory: frontend
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+    - name: Deploy to VM
+      run: |
+        echo "${{ secrets.SSH_PASSWORD }}" > sshpass_file
+        sshpass -f sshpass_file ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} 'bash -s' <<'EOF'
+          sudo docker stop $(sudo docker ps -aq) || true
+          sudo docker rm $(sudo docker ps -aq) || true
+          sudo docker rmi $(sudo docker images -q) || true
+
+          cd WellnessWhale/backend
+          sudo docker build -t backend .
+          sudo docker run -d -p 5000:5000 backend
+
+          cd ../frontend
+          sudo docker build -t frontend .
+          sudo docker run -d -p 3000:3000 frontend
+        EOF
+      env:
+        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+        SSH_HOST: ${{ secrets.SSH_HOST }}
+        SSH_USERNAME: ${{ secrets.SSH_USERNAME }}
