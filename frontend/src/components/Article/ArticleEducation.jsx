@@ -1,55 +1,52 @@
-// components/ArticleEducation.js
-
 import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import SusahTidur from "../../assets/images/article/SusahTidur.png";
-import SelfHarm from "../../assets/images/article/SelfHarm.png"; // Import gambar SelfHarm
+import Harm from "../../assets/images/article/harm.png";
+import Gerd from "../../assets/images/article/gerd.png";
 
 const ArticleEducation = () => {
   const router = useRouter();
-  const [showArticleContent, setShowArticleContent] = useState(false);
 
   const articles = [
     {
       educationId: 1,
       title: "Solusi Susah Tidur",
       description:
-        "Berikut adalah penjelasan bagaimana cara tidur lebih mudah...",
+        "Kesulitan tidur atau insomnia adalah masalah umum yang dapat memengaruhi kesehatan dan kualitas hidup seseorang.",
       image: SusahTidur,
     },
     {
       educationId: 2,
       title: "Jangan Sampai Gerd",
-      description: "Gerd adalah sakit lambung, hanya bisa dihindari...",
-      image: SelfHarm,
+      description:
+        "Gerd adalah gangguan yang terjadi ketika isi lambung naik ke kerongkongan karena otot-otot di kerongkongan dan dasar kerongkongan yang lemah atau tidak berfungsi dengan baik.",
+      image: Gerd,
     },
     {
       educationId: 3,
       title: "Atasi Gangguan Self-Harms",
       description:
-        "Salah satu gangguan mental yang baru-baru ini kerap dibicarakan adalah self-harm atau gangguan melukai diri sendiri. Tindakan self-harm dilakukan dengan sengaja untuk merasakan sakit fisik demi mengalihkan beban emosi atau sakit hati.",
-      image: SelfHarm,
+        "Salah satu gangguan mental yang baru-baru ini kerap dibicarakan adalah self-harm atau gangguan melukai diri sendiri.",
+      image: Harm,
     },
-    // Tambahkan artikel lainnya sesuai kebutuhan
   ];
 
   const handleCardClick = (educationId) => {
     router.push(`/article/education/${educationId}`);
   };
 
-  const handleArticleButtonClick = () => {
-    setShowArticleContent(true);
+  const handleArticleButtonClick = (educationId) => {
+    router.push(`/article/education/${educationId}`);
   };
 
   return (
     <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      {/* Hero Section */}
       <div className="hero p-8 rounded-lg mb-8 flex flex-col md:flex-row items-center">
         <div className="flex-1 mb-4 md:mb-0">
           <Image
-            src={articles[2].image} // Ganti dengan path gambar artikel Self-Harm
-            alt="Self-harm awareness"
+            src={articles[2].image}
+            alt=""
             width={400}
             height={300}
             className="w-full h-64 object-cover rounded-lg"
@@ -57,14 +54,13 @@ const ArticleEducation = () => {
         </div>
         <div className="flex-1 text-center md:text-left md:pl-8">
           <h1 className="text-3xl font-bold mb-4" style={{ color: "black" }}>
-            {articles[2].title} {/* Ganti dengan judul artikel Self-Harm */}
+            {articles[2].title}
           </h1>
           <p className="mb-4" style={{ color: "black" }}>
             {articles[2].description}{" "}
-            {/* Ganti dengan deskripsi artikel Self-Harm */}
           </p>
           <button
-            onClick={handleArticleButtonClick}
+            onClick={() => handleArticleButtonClick(articles[2].educationId)}
             style={{
               backgroundColor: "#2B544A",
               color: "white",
@@ -79,7 +75,6 @@ const ArticleEducation = () => {
         </div>
       </div>
 
-      {/* Article Section */}
       <section>
         <h2 className="text-2xl font-bold mb-4" style={{ color: "black" }}>
           Artikel Edukasi
@@ -101,7 +96,7 @@ const ArticleEducation = () => {
                 background: "#fff",
                 cursor: "pointer",
               }}
-              onClick={() => handleCardClick(article.educationId)} // Mengarahkan ke halaman artikel yang sesuai
+              onClick={() => handleCardClick(article.educationId)}
             >
               <Image
                 src={article.image}

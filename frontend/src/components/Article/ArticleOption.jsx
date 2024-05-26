@@ -2,6 +2,11 @@ import React from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Beras from "../../assets/images/hero/beras.png";
+import Hujan from "../../assets/images/hero/hujan.png";
+import Air from "../../assets/images/hero/air.png";
+import Ombak from "../../assets/images/hero/ombak.png";
+import Angin from "../../assets/images/hero/angin.png";
+import Burung from "../../assets/images/hero/burung.png";
 
 const articles = [
   {
@@ -11,28 +16,28 @@ const articles = [
   },
   {
     id: 2,
-    title: "Manfaat beras untuk kesehatan kulit",
-    image: Beras,
+    title: "Meditasi dengan suara hujan",
+    image: Hujan,
   },
   {
     id: 3,
-    title: "Cara membuat air beras untuk wajah",
-    image: Beras,
+    title: "Relaksasi dengan suara air mengalir",
+    image: Air,
   },
   {
     id: 4,
-    title: "Kompres air beras untuk relaksasi",
-    image: Beras,
+    title: "Relaksasi dengan suara ombak laut",
+    image: Ombak,
   },
   {
     id: 5,
-    title: "Penggunaan air beras dalam spa",
-    image: Beras,
+    title: "Relaksasi dengan suara hembusan angin",
+    image: Angin,
   },
   {
     id: 6,
-    title: "Efek aromaterapi air beras",
-    image: Beras,
+    title: "Relaksasi dengan suara kicau burung",
+    image: Burung,
   },
 ];
 
