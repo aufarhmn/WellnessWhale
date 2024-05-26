@@ -18,7 +18,7 @@ export default function MoodDetail() {
       case "Anxiety":
         return (
           <>
-            <p className="text-xl font-bold mb-2">Kondisi anda: Anxiety</p>
+            <p className="text-xl font-bold mb-2">Anda memiliki kemungkinan: Anxiety</p>
             <p className="mb-4">
               Sayang sekali mood anda sedang cemas, kami berpikir bahwa anda
               terlalu banyak memikirkan hal-hal yang belum tentu terjadi. Anda
@@ -46,7 +46,7 @@ export default function MoodDetail() {
       case "Bipolar":
         return (
           <>
-            <p className="text-xl font-bold mb-2">Mood anda: Bipolar</p>
+            <p className="text-xl font-bold mb-2">Anda memiliki kemungkinan: Bipolar</p>
             <p className="mb-4">
               Mood anda berubah-ubah, kami berpikir bahwa anda mengalami
               perubahan emosi yang drastis. Anda mungkin mengalami masalah besar
@@ -73,7 +73,7 @@ export default function MoodDetail() {
       case "Depression":
         return (
           <>
-            <p className="text-xl font-bold mb-2">Mood anda: Depression</p>
+            <p className="text-xl font-bold mb-2">Anda memiliki kemungkinan: Depression</p>
             <p className="mb-4">
               Sayang sekali mood anda tidak baik, kami berpikir bahwa anda
               kelelahan dan terlalu banyak memikirkan orang lain. Anda juga
@@ -101,7 +101,7 @@ export default function MoodDetail() {
       case "Normal":
         return (
           <>
-            <p className="text-xl font-bold mb-2">Mood anda: Normal</p>
+            <p className="text-xl font-bold mb-2">Anda memiliki kemungkinan: Normal</p>
             <p className="mb-4">Mood anda dalam kondisi normal.</p>
             <h4 className="font-semibold mb-2">Rekomendasi tindakan</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
@@ -123,7 +123,7 @@ export default function MoodDetail() {
       default:
         return (
           <>
-            <p className="text-xl font-bold mb-2">Mood anda: Tidak diketahui</p>
+            <p className="text-xl font-bold mb-2">Anda memiliki kemungkinan: Tidak diketahui</p>
             <p className="mb-4">Mood anda tidak dapat diidentifikasi.</p>
             <h4 className="font-semibold mb-2">Rekomendasi tindakan</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
