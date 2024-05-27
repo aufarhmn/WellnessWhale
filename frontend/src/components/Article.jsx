@@ -30,45 +30,51 @@ export default function Article() {
         </div>
         <div className="w-full h-max flex flex-col md:flex-row mt-4 px-4 md:px-24 space-y-4 md:space-y-0 md:space-x-4">
           <div className="h-full w-full bg-white flex flex-col px-2">
-            <div className="w-full h-fit">
-              <Image src={Article1} className="aspect-auto" alt="Article 1" />
-            </div>
-            <div className="w-full h-fit mt-4 md:mt-8">
-              <p className="font-bold font-['Poppins'] text-[20px] md:text-[26px]">
-                Solusi susah tidur
-              </p>
-              <p className="font-['Poppins'] text-[16px] md:text-[20px]">
-                Berikut adalah penjelasan bagaimana anda bisa susah...
-              </p>
-            </div>
+            <Link href="/article/education/1">
+              <div className="w-full h-fit">
+                <Image src={Article1} className="aspect-auto" alt="Article 1" />
+              </div>
+              <div className="w-full h-fit mt-4 md:mt-8">
+                <p className="font-bold font-['Poppins'] text-[20px] md:text-[26px]">
+                  Solusi susah tidur
+                </p>
+                <p className="font-['Poppins'] text-[16px] md:text-[20px]">
+                  Berikut adalah penjelasan bagaimana anda bisa susah...
+                </p>
+              </div>
+            </Link>
           </div>
           <div className="h-full w-full bg-white flex flex-col px-2">
-            <div className="w-full h-fit">
-              <Image src={Gerd} className="aspect-auto" alt="Gerd" />
-            </div>
-            <div className="w-full h-fit mt-4 md:mt-8">
-              <p className="font-bold font-['Poppins'] text-[20px] md:text-[26px]">
-                Solusi susah tidur
-              </p>
-              <p className="font-['Poppins'] text-[16px] md:text-[20px]">
-                Berikut adalah penjelasan bagaimana anda bisa susah...
-              </p>
-            </div>
+            <Link href="/article/education/2">
+              <div className="w-full h-fit">
+                <Image src={Gerd} className="aspect-auto" alt="Gerd" />
+              </div>
+              <div className="w-full h-fit mt-4 md:mt-8">
+                <p className="font-bold font-['Poppins'] text-[20px] md:text-[26px]">
+                  Jangan sampai Gerd
+                </p>
+                <p className="font-['Poppins'] text-[16px] md:text-[20px]">
+                  Berikut adalah penjelasan bagaimana anda bisa ......
+                </p>
+              </div>
+            </Link>
           </div>
           <div className="h-full w-full bg-white flex flex-col px-2">
-            <div className="w-full h-fit">
-              <Image src={Obat} className="aspect-auto" alt="Obat" />
-            </div>
-            <div className="w-full h-fit mt-4 md:mt-8">
-              <p className="font-bold font-['Poppins'] text-[20px] md:text-[26px]">
-                Solusi susah tidur
-              </p>
-              <p className="font-['Poppins'] text-[16px] md:text-[20px]">
-                Berikut adalah penjelasan bagaimana anda bisa susah...
-              </p>
-            </div>
+            <Link href="/article/education/3">
+              <div className="w-full h-fit">
+                <Image src={Obat} className="aspect-auto" alt="Obat" />
+              </div>
+              <div className="w-full h-fit mt-4 md:mt-8">
+                <p className="font-bold font-['Poppins'] text-[20px] md:text-[26px]">
+                  Atasi gangguan self-harm
+                </p>
+                <p className="font-['Poppins'] text-[16px] md:text-[20px]">
+                  Berikut adalah penjelasan bagaimana anda bisa ......
+                </p>
+              </div>
+            </Link>
           </div>
-          <div className="h-full w-full bg-white flex flex-col px-2">
+          {/* <div className="h-full w-full bg-white flex flex-col px-2">
             <div className="w-full h-fit">
               <Image src={Kantuk} className="aspect-auto" alt="Kantuk" />
             </div>
@@ -80,7 +86,7 @@ export default function Article() {
                 Berikut adalah penjelasan bagaimana anda bisa susah...
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
